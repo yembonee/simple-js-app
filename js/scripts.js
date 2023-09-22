@@ -55,12 +55,25 @@ let pokemonList = [
 
 // for loop to iterate through pokemon in pokemonList
 
-for (let i = 0; i <pokemonList.length; i++) {
-    if (pokemonList[i].height > 15) {
-        document.write(pokemonList[i].name + ` Height: ${pokemonList[i].height} - Wow that's big!`);
+// for (let i = 0; i <pokemonList.length; i++) {
+//     if (pokemonList[i].height > 15) {
+//         document.write(pokemonList[i].name + ` Height: ${pokemonList[i].height} - Wow that's big!`);
+//         document.write("<br>");
+//     } else {
+//         document.write(pokemonList[i].name + ` Height: ${pokemonList[i].height} `);
+//         document.write("<br>"); 
+//     }
+// }
+
+// forEach loop to iterate through pokemon in pokemonList
+
+pokemonList.forEach(function(pokemon) {
+        if (pokemon.height > 15) {
+        document.write(pokemon.name + ` Height: ${pokemon.height} - Wow that's big!`);
         document.write("<br>");
-    } else {
-        document.write(pokemonList[i].name + ` Height: ${pokemonList[i].height} `);
+        } else {
+        document.write(pokemon.name + ` Height: ${pokemon.height} `);
         document.write("<br>"); 
-    }
-}
+        }
+    }   
+)
