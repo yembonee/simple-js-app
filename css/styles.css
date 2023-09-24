@@ -1,0 +1,10 @@
+.button-class {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 20px 15px;
+    padding: 0 20px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.2);
+}
