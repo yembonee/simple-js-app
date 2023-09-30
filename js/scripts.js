@@ -27,20 +27,20 @@ let pokemonRepository = ( function() {
 
     //function to add a pokemon to the list
     function addListItem(pokemon) {
-        let ulPokemon = document.querySelector(".pokemon-list");
+        let ulPokemon = document.querySelector(".list-group");
 
         let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
 
         let button = document.createElement("button");
-
         button.innerText = pokemon.name;
-        button.classList.add("button-class");
+        button.classList.add("btn", "btn-primary", "btn-lg");
+        button.setAttribute("data-toggle", "modal");
+        button.setAttribute("data-target", "#example-modal");
 
         listItem.appendChild(button);
-        
         ulPokemon.appendChild(listItem);
-
-        button.addEventListener("click", function(event){
+        button.addEventListener("click", function(){
             showDetails(pokemon);
         });
     }
@@ -71,8 +71,8 @@ let pokemonRepository = ( function() {
         }).then(function (details) {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
+            item.weight = details.weight;
             item.types = details.types;
-            showModal(item);
         }).catch(function (e) {
             console.error(e);
         });
@@ -80,22 +80,45 @@ let pokemonRepository = ( function() {
 
     // calls the loadDetails function onto the site.
     function showDetails(pokemon) {
-        loadDetails(pokemon);
+        loadDetails(pokemon).then(function () {
+            showModal(pokemon)
+        });
     };
 
     // function that creates a modal of the pokemon's picture, name, and other attributes when that pokemon's button is pressed.
     function showModal(pokemon) {
-        let modalContainer = document.querySelector('#modal-container');
+
+        let modalBody = $(".modal-body");
+        let modalTitle = $(".modal-title");
+        let modalHeader = $(".modal-header");
+
+        modalTitle.empty();
+        modalBody.empty();
+
+        let nameElement = $('<h1 class="modal-title">' + pokemon.name + "</h1>");
+
+        let imageElement = $('<img class="modal-img" style="width:50%">');
+        imageElement.attr("src", pokemon.imageUrl);
+
+        let heightElement = $('<p>' + "Height: " + pokemon.height + "</p>");
+
+        let weightElement = $('<p>' + "Weight: " + pokemon.weight + '</p>');
+
+        modalTitle.append(nameElement);
+        modalBody.append(imageElement);
+        modalBody.append(heightElement);
+        modalBody.append(weightElement);
+        /* let modalContainer = $('#modal-container');
+        modalContainer.empty();
     
-        modalContainer.innerHTML = '';
-    
+        
         // making a div element with class
         let modal = document.createElement('div');
         modal.classList.add('modal');
     
         //making button element with class and event listener
         let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.classList.add('btn-secondary');
         closeButtonElement.innerText = 'CLOSE';
         closeButtonElement.addEventListener('click', hideModal)
     
@@ -119,6 +142,7 @@ let pokemonRepository = ( function() {
         modalContainer.appendChild(modal);
       
         //adding css attribute for the modal so when it is clicked, it becomes visible
+
         modalContainer.classList.add('is-visible');
     
         modalContainer.addEventListener('click', (e) => {
@@ -128,8 +152,10 @@ let pokemonRepository = ( function() {
           }
         });
         
+        */
       }
-    
+      
+      /*
       let dialogPromiseReject;
 
       //function to close the modal once opened
@@ -147,9 +173,9 @@ let pokemonRepository = ( function() {
         let modalContainer = document.querySelector('#modal-container');
         if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
           hideModal();
-        }  
+        }
       });
-
+      */
 
     return {
         add: add,
