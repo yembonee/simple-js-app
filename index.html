@@ -10,18 +10,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+      <a class="navbar-brand" href="#" alt="header">Pokedex</a>
     </nav>
 
-
-    <div class="container page-container">
-        <ul class="pokemon-list list-group"></ul>
-    </div>
-
 <!-- Modal -->
-    <div class="modal-fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="model-label" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+    <div alt="modal" class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modal-label">Modal Title</h5>
@@ -37,6 +32,11 @@
         </div>
       </div>
     </div>
+
+    <div class="container page-container">
+      <ul class="pokemon-list list-group"></ul>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
