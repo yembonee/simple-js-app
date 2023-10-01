@@ -1,6 +1,7 @@
 html, 
 body {
   font-family: Arial, sans-serif;
+  background-color: aliceblue;
 }
 
 .btn {
@@ -27,4 +28,21 @@ body {
   color: #ff0000;
   font-weight: bolder;
   border-width: 2px;
+}
+
+.list-group {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.list-group-item button {
+  width: 250px;
+}
+
+.modal-body {
+  display: flex;
+  flex-flow: column wrap;
 }
