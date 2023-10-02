@@ -1,7 +1,8 @@
 html, 
 body {
   font-family: Arial, sans-serif;
-  background-color: aliceblue;
+  text-transform: capitalize;
+  background-color: rgb(95, 183, 255);
 }
 
 .btn {
@@ -12,7 +13,6 @@ body {
     font-weight: bold;
     border-width: 4px;
     text-transform: capitalize;
-    background-color: rgba(214, 214, 214, 0.651);
     cursor: pointer;
     border-radius: 7px;
     border-color: silver;
@@ -35,13 +35,71 @@ body {
   align-items: center;
   justify-content: center;
   flex-flow: row wrap;
+  margin-top: 30px;
+}
+
+.list-group-item {
+  margin: 8px;
+  border: none;
+  background-color: rgb(95, 183, 255);
 }
 
 .list-group-item button {
-  width: 250px;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(185, 219, 247);
+  box-shadow: 5px black;
+  border-color: black;
 }
 
 .modal-body {
   display: flex;
   flex-flow: column wrap;
+  align-items: center;
+  font-weight: bold;
+}
+
+.modal-content {
+  background-color: aliceblue;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  border-width: 7px;
+  border-color: black;
+}
+
+.modal-header {
+  border-bottom: none;
+  align-self: center;
+  font-weight: bolder;
+}
+
+.modal-footer {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  padding: 0%;
+  margin: 2%;
+}
+
+span {
+  line-height: 1.3rem;
+  font-size: 1.2rem;
+  border: 3px solid silver;
+  box-shadow: 5px 3px 4px silver;
+  border-radius: 0.5rem;
+  margin: 15px;
+  padding: 3%;
+  background-color: aliceblue;
+}
+
+p {
+  font-size: 17px;
+}
+
+.pokemonImage {
+  width: 40%;
 }

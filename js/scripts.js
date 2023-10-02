@@ -33,13 +33,22 @@ let pokemonRepository = ( function() {
         listItem.classList.add("list-group-item");
 
         let pokemonButton = document.createElement("button");
-        pokemonButton.innerText = pokemon.name;
         pokemonButton.classList.add("btn", "btn-primary", "btn-lg");
         pokemonButton.setAttribute("data-toggle", "modal");
         pokemonButton.setAttribute("data-target", "#pokemonModal");
 
+        let pokemonButtonLabel = document.createElement("div");
+        pokemonButtonLabel.innerText = pokemon.name;
+
+        let pokemonPreviewImg = document.createElement("img");
+        pokemonPreviewImg.classList.add("pokemonImage");
+        pokemonPreviewImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`;
+        pokemonButton.setAttribute("id", pokemon.id);
+
+        pokemonButton.appendChild(pokemonButtonLabel);
         listItem.appendChild(pokemonButton);
         ulPokemonList.appendChild(listItem);
+        pokemonButton.appendChild(pokemonPreviewImg);
         pokemonButton.addEventListener("click", function (e) {
             showDetails(pokemon);
         });
@@ -61,12 +70,15 @@ let pokemonRepository = ( function() {
         let imageElement = $('<img class="modal-img" style="width:50%">');
         imageElement.attr("src", pokemon.imageUrl);
     
+        let typesElement = $('<span>' + "Types: " + pokemon.types + '</span>');
+
         let heightElement = $('<p>' + "Height: " + pokemon.height + "</p>");
     
         let weightElement = $('<p>' + "Weight: " + pokemon.weight + '</p>');
     
         modalTitle.append(nameElement);
         modalBody.append(imageElement);
+        modalBody.append(typesElement);
         modalBody.append(heightElement);
         modalBody.append(weightElement);
     }
@@ -76,9 +88,11 @@ let pokemonRepository = ( function() {
         return fetch(apiUrl).then(function (response) {
             return response.json();
         }).then(function (json) {
-            json.results.forEach(function (item) {
+            json.results.forEach(function (item, index) {
                 let pokemon = {
+                    id: index + 1,
                     name: item.name,
+                    imageUrl: item.imageUrl,
                     detailsUrl: item.url
                 };
                 add(pokemon);
@@ -95,10 +109,13 @@ let pokemonRepository = ( function() {
         return fetch(url).then(function (response) {
             return response.json();
         }).then(function (details) {
-            item.imageUrl = details.sprites.front_default;
+            item.imageUrl = details.sprites.other["official-artwork"].front_default;
             item.height = details.height;
             item.weight = details.weight;
-            item.types = details.types;
+            item.types = [];
+            for (var i = 0; i < details.types.length; i++) {
+                item.types.push(details.types[i].type.name);
+            }
         }).catch(function (e) {
             console.error(e);
         });
