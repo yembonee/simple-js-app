@@ -22,7 +22,7 @@ This is a Javascript application that will use the PokeAPI to display informatio
 - A web browser (i.e. Chrome, Safari, Firefox...)
 
 ## Setup and Installation
-1. Go to [link] (https://github.com/yembonee/simple-js-app)
+1. Go to https://github.com/yembonee/simple-js-app
 2. Click green code button under the repository name
 3. Download the Zip
 4. Extract the folder onto Desktop, or any preffered location
